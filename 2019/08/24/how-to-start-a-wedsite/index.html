@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="hexo,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1：环境安装安装nodejs，并且node版本有要求，同时也安装好nvm，cnpm node的安装：     该命令下：https://nodejs.org/download/release/v8.16.0/     找到自己的版本：node-v8.16.0-x64.msi（我的电脑是win 64位的）  nvm的安装（node的版本管理工具，如果你电脑上有两个版本的node）     nvm安装">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="how to start a wedsite">
+<meta property="og:url" content="http://twilight.com/2019/08/24/how-to-start-a-wedsite/index.html">
+<meta property="og:site_name" content="黑幕">
+<meta property="og:description" content="1：环境安装安装nodejs，并且node版本有要求，同时也安装好nvm，cnpm node的安装：     该命令下：https://nodejs.org/download/release/v8.16.0/     找到自己的版本：node-v8.16.0-x64.msi（我的电脑是win 64位的）  nvm的安装（node的版本管理工具，如果你电脑上有两个版本的node）     nvm安装">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-24T14:02:41.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="how to start a wedsite">
+<meta name="twitter:description" content="1：环境安装安装nodejs，并且node版本有要求，同时也安装好nvm，cnpm node的安装：     该命令下：https://nodejs.org/download/release/v8.16.0/     找到自己的版本：node-v8.16.0-x64.msi（我的电脑是win 64位的）  nvm的安装（node的版本管理工具，如果你电脑上有两个版本的node）     nvm安装">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://twilight.com/2019/08/24/how-to-start-a-wedsite/">
+
+
+
+
+
+  <title>how to start a wedsite | 黑幕</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">黑幕</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://twilight.com/2019/08/24/how-to-start-a-wedsite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林冲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黑幕">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">how to start a wedsite</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-24T20:32:43+08:00">
+                2019-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">阅读数</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1：环境安装"><a href="#1：环境安装" class="headerlink" title="1：环境安装"></a>1：环境安装</h2><pre><code>安装nodejs，并且node版本有要求，同时也安装好nvm，cnpm
+node的安装：
+    该命令下：https://nodejs.org/download/release/v8.16.0/
+    找到自己的版本：node-v8.16.0-x64.msi（我的电脑是win 64位的）
+
+nvm的安装（node的版本管理工具，如果你电脑上有两个版本的node）
+    nvm安装的链接：https://github.com/coreybutler/nvm-windows/releases
+    在该链接下，下载：nvm-setup.zip，解压后安装
+测试是node nvm是否安装成功
+    在命令行里输入：
+        node -v，成功则显示：v8.16.0
+        nvm ,成功则显示：Running version 1.1.6....
+    切换node版本：
+        nvm use 8.16.0
+
+安装cnpm
+    在命令行里输入：
+    npm install cnpm -g
+
+hexo的安装
+    在命令行里输入：
+    cnpm install hexo -g
+    cnpm install hexo --save
+
+安装git
+    git链接：https://gitforwindows.org/
+    下载安装即可</code></pre><h2 id="2-申请github账户"><a href="#2-申请github账户" class="headerlink" title="2:申请github账户"></a>2:申请github账户</h2><pre><code>注意：在github上发表博客都是以 xxx.github.io 这种类型的，其中xxx就是你github账户的用户名
+如果要想有一个别致的名字，得在注册的时候就要想好。
+github的链接：
+    https://github.com/
+在该链接下申请账户，过程省略...
+
+配置ssh
+shh的作用是：你在本地写好博客，上传的github上使用的
+步骤：
+    前提是已经安装好环境
+    第一步：
+    打开git工具生成shh,命令：ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+    你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可。如果一切顺利的话，可以在C:\Users\Administrator目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+    第二步：
+    登陆GitHub，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key，title任意填写，将第一步生成的id_rsa.pub中的内容复制到key中，最后点击Add SSH key。</code></pre><h2 id="3：在git-bash里建立博客项目"><a href="#3：在git-bash里建立博客项目" class="headerlink" title="3：在git bash里建立博客项目"></a>3：在git bash里建立博客项目</h2><pre><code>1：推荐在自己的电脑的E盘建立文件夹，命名hexo
+2：打开git或者命令行（推荐打开git）
+3：进入自己建立的文件夹：E:\hexo，输入命令
+    hexo的建立过程可参考官网：https://hexo.io/zh-cn/docs/
+    初始化：
+        hexo init(完成后会在该目录下新建一下文件夹)
+        ![配置图片](dir.jpg)
+        _config.yml--存放配置信息的地方：可自行参考官网
+    配置自己的主题：
+        推荐使用next,安装方法：
+            next的地址：https://github.com/iissnan/hexo-theme-next
+        使用git安装：
+            在命令行里进入：E:\hexo
+            git clone --branch v5.1.2 https://github.com/iissnan/hexo-theme-next themes/next
+            下载完成后：把主题放在：该文件夹下：E:\hexo\themes
+            ![配置图片](themes.jpg)
+    新建自己的文章：
+        在git里输入：
+            hexo new &quot;my first article&quot;
+            注意：
+            文章生成后是以.md结尾的文档，文章的内容在该文档里填写，需要注意使用相应的语法，推荐使用subline text
+        生成文件
+            hexo g
+    部署到自己的github的仓库里：
+        1：在自己的github里新建仓库注意，仓库的名字必须是：“你自己的账户名.github.io”
+        2：在_config.yml修改
+            deploy:
+              type: git
+              repository: git@github.com:你自己的账户名/你自己的账户名.github.io
+              branch: master
+        3：使用命名 hexo d发布到github上</code></pre><h2 id="hexo的自定义设置"><a href="#hexo的自定义设置" class="headerlink" title="hexo的自定义设置"></a>hexo的自定义设置</h2><pre><code>1：折叠显示文章：
+    E:\hexo\themes\next\_config.yml
+        auto_excerpt:
+          enable: true
+          length: 150
+2：配置显示图片：
+    1：打开E:\hexo\_config.yml
+        配置：
+            post_asset_folder: true
+    2：安装插件：
+        cnpm install hexo-asset-image --save
+    3：在自己的文章中以一下形式插入图片：
+        ##![配置图片](06.jpg)
+        ![配置图片](06.jpg)
+        注意：图片文件是放在：与文章同名的文件下的例如：E:\hexo\source\_posts\how-to-start-a-wedsite
+3：配置网站访问量
+    1：打开E:\hexo\themes\next\_config.yml
+        修改：
+            busuanzi_count:
+              # count values only if the other configs are false
+              enable: true
+              # custom uv span for the whole site
+              site_uv: true
+              site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;访客数&lt;/i&gt;
+              site_uv_footer: 人
+              # custom pv span for the whole site
+              site_pv: true
+              site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;总访问量&lt;/i&gt;
+              site_pv_footer: 次
+              # custom pv span for one page only
+              page_pv: true
+              page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;阅读数&lt;/i&gt;
+              page_pv_footer:
+        如果没生效：
+            打开：E:\hexo\themes\next\layout\_third-party\analytics\busuanzi-counter.swig
+            修改：
+                注释掉上面的
+              #&lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
+                &lt;script async src=&quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
+4：让自己的网站可以播放音乐：
+    以kolor的围城为例：
+        https://music.163.com/#/song?id=362759
+        在该链接下点击：
+            生成外链播放器
+            把弹出的代码粘贴到自己的文章中，示例：
+    &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=362759&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;
+5：这是使用hexo建立自己网站的详细过程，更多设置，可参考hexo官网</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/24/twilight/" rel="next" title="当暮色降临的时候">
+                <i class="fa fa-chevron-left"></i> 当暮色降临的时候
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林冲</p>
+              <p class="site-description motion-element" itemprop="description">找到你了</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：环境安装"><span class="nav-number">1.</span> <span class="nav-text">1：环境安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-申请github账户"><span class="nav-number">2.</span> <span class="nav-text">2:申请github账户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：在git-bash里建立博客项目"><span class="nav-number">3.</span> <span class="nav-text">3：在git bash里建立博客项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo的自定义设置"><span class="nav-number">4.</span> <span class="nav-text">hexo的自定义设置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林冲</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  #<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
