@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="django,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="找到你了">
+<meta name="description" content="1：django中的session和cookie1.1:cookie和sessioncookie：是保存在客户端的键值对session：是保存在服务端的键值对，应用：依赖cookie作用：保持会话 123response = HttpResponse(&quot;helllo world&quot;)response.set_cookie(&quot;k1&quot;,&quot;v1&quot;)response.set_cookie(&quot;k2&quot;,&quot;v2&quot;">
+<meta name="keywords" content="django">
 <meta property="og:type" content="article">
 <meta property="og:title" content="django day74 session and cookie">
 <meta property="og:url" content="http://twilight.com/2019/08/25/django-day74-session-and-cookie/index.html">
 <meta property="og:site_name" content="黑幕">
-<meta property="og:description" content="找到你了">
+<meta property="og:description" content="1：django中的session和cookie1.1:cookie和sessioncookie：是保存在客户端的键值对session：是保存在服务端的键值对，应用：依赖cookie作用：保持会话 123response = HttpResponse(&quot;helllo world&quot;)response.set_cookie(&quot;k1&quot;,&quot;v1&quot;)response.set_cookie(&quot;k2&quot;,&quot;v2&quot;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-25T03:35:40.167Z">
+<meta property="og:updated_time" content="2019-08-25T04:44:03.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="django day74 session and cookie">
-<meta name="twitter:description" content="找到你了">
+<meta name="twitter:description" content="1：django中的session和cookie1.1:cookie和sessioncookie：是保存在客户端的键值对session：是保存在服务端的键值对，应用：依赖cookie作用：保持会话 123response = HttpResponse(&quot;helllo world&quot;)response.set_cookie(&quot;k1&quot;,&quot;v1&quot;)response.set_cookie(&quot;k2&quot;,&quot;v2&quot;">
 
 
 
@@ -304,7 +305,20 @@
       
 
       
-        
+        <h1 id="1：django中的session和cookie"><a href="#1：django中的session和cookie" class="headerlink" title="1：django中的session和cookie"></a>1：django中的session和cookie</h1><h2 id="1-1-cookie和session"><a href="#1-1-cookie和session" class="headerlink" title="1.1:cookie和session"></a>1.1:cookie和session</h2><p>cookie：是保存在客户端的键值对<br>session：是保存在服务端的键值对，<br>应用：依赖cookie<br>作用：保持会话</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response = HttpResponse(<span class="string">"helllo world"</span>)</span><br><span class="line">response.set_cookie(<span class="string">"k1"</span>,<span class="string">"v1"</span>)</span><br><span class="line">response.set_cookie(<span class="string">"k2"</span>,<span class="string">"v2"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>session把敏感信息存储到服务器，把键作为cookied的<br>值返回给客户端</p>
+<p>django中使用session的方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.session[<span class="string">'username'</span>] = <span class="string">'bobby'</span></span><br><span class="line">request.session[<span class="string">'pwd'</span>] = <span class="string">'123'</span></span><br><span class="line"><span class="built_in">return</span> redirect(<span class="string">'/index/'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在登陆的时候，验证用户信息的方式：<br>    1：验证cookie中的随机字符串<br>    2：去session中验证随机字符串<br>    3：去session中对应的keyd的value中查看是否有username</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">v = request.session.get(<span class="string">'username'</span>)</span><br><span class="line"><span class="keyword">if</span> v:</span><br><span class="line">	<span class="built_in">return</span> HttpResponse(<span class="string">'登录成功%s'</span>%v)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">return</span> redirect(<span class="string">'/index/'</span>)</span><br><span class="line">```	</span><br><span class="line"><span class="comment"># 1:day74session的基本使用</span></span><br><span class="line"><span class="comment">## 1.1：代码示例：</span></span><br><span class="line">``` bash</span><br><span class="line">def login(requet):</span><br><span class="line">	<span class="keyword">if</span> request.Method == <span class="string">"GET"</span>:</span><br><span class="line">		<span class="built_in">return</span> render(requet,<span class="string">"login.html"</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		u = request.POST.get(<span class="string">"user"</span>)</span><br><span class="line">		p = request.POST.get(<span class="string">"pwd"</span>)</span><br><span class="line">		obj = model.UserAdmin.objects.filter(<span class="string">"username"</span>=u,<span class="string">"password"</span>=p).first()</span><br><span class="line">		<span class="keyword">if</span> obj:</span><br><span class="line">			request.session[<span class="string">"username"</span>] =  obj.username</span><br><span class="line">			<span class="built_in">return</span> redirct(<span class="string">"/idexx/"</span>)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="built_in">return</span> render(requet,<span class="string">"login.html"</span>)</span><br><span class="line"></span><br><span class="line">def index(request):</span><br><span class="line">	v = request.session.get(<span class="string">"username"</span>)</span><br><span class="line">	<span class="keyword">if</span> v:</span><br><span class="line">		<span class="built_in">return</span> HttpResponse(<span class="string">"登录成功%s"</span>%v)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">return</span> render(requet,<span class="string">"login.html"</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="1：day74配置文件及其他操作"><a href="#1：day74配置文件及其他操作" class="headerlink" title="1：day74配置文件及其他操作"></a>1：day74配置文件及其他操作</h1><h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><p>1.1.1：session的相关操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request.session[<span class="string">"k1"</span>]</span><br><span class="line">request.session.get(<span class="string">"k1"</span>,none)</span><br><span class="line">request.session[<span class="string">"k1"</span>] = <span class="string">"v1"</span></span><br><span class="line">request.session.setdefault(<span class="string">"k1"</span>,123)</span><br><span class="line">del request.session[<span class="string">"k1"</span>]</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -318,6 +332,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/django/" rel="tag"># django</a>
+          
+        </div>
       
 
       
@@ -388,8 +408,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -417,7 +446,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -440,6 +469,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1：django中的session和cookie"><span class="nav-number">1.</span> <span class="nav-text">1：django中的session和cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-cookie和session"><span class="nav-number">1.1.</span> <span class="nav-text">1.1:cookie和session</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1：day74配置文件及其他操作"><span class="nav-number">2.</span> <span class="nav-text">1：day74配置文件及其他操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1"><span class="nav-number">2.1.</span> <span class="nav-text">1.1</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
