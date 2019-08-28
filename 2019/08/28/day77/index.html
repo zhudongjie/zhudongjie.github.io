@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="找到你了">
+<meta name="description" content="day77-02-内容回顾请求生命周期1：先经过wsgi2：到达django的中间件3：到达视图4：再返回给中间件5：返回给wsgi session是什么1：保存在服务端的键值对2：服务端生成随机字符串，把值返回给客户端作为cookie csrf-xss1：xss（用户输入js代码）alert()2：csrf用于在post请求时：携带随机字符串 day77-03-验证流程分析form组件的作用1：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="day77">
 <meta property="og:url" content="http://twilight.com/2019/08/28/day77/index.html">
 <meta property="og:site_name" content="where do we go">
-<meta property="og:description" content="找到你了">
+<meta property="og:description" content="day77-02-内容回顾请求生命周期1：先经过wsgi2：到达django的中间件3：到达视图4：再返回给中间件5：返回给wsgi session是什么1：保存在服务端的键值对2：服务端生成随机字符串，把值返回给客户端作为cookie csrf-xss1：xss（用户输入js代码）alert()2：csrf用于在post请求时：携带随机字符串 day77-03-验证流程分析form组件的作用1：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-28T13:12:33.622Z">
+<meta property="og:image" content="http://twilight.com/2019/08/28/day77/detail.png">
+<meta property="og:image" content="http://twilight.com/2019/08/28/day77/form.png">
+<meta property="og:updated_time" content="2019-08-28T14:20:17.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="day77">
-<meta name="twitter:description" content="找到你了">
+<meta name="twitter:description" content="day77-02-内容回顾请求生命周期1：先经过wsgi2：到达django的中间件3：到达视图4：再返回给中间件5：返回给wsgi session是什么1：保存在服务端的键值对2：服务端生成随机字符串，把值返回给客户端作为cookie csrf-xss1：xss（用户输入js代码）alert()2：csrf用于在post请求时：携带随机字符串 day77-03-验证流程分析form组件的作用1：">
+<meta name="twitter:image" content="http://twilight.com/2019/08/28/day77/detail.png">
 
 
 
@@ -304,7 +307,14 @@
       
 
       
-        
+        <h1 id="day77-02-内容回顾"><a href="#day77-02-内容回顾" class="headerlink" title="day77-02-内容回顾"></a>day77-02-内容回顾</h1><h2 id="请求生命周期"><a href="#请求生命周期" class="headerlink" title="请求生命周期"></a>请求生命周期</h2><p>1：先经过wsgi<br>2：到达django的中间件<br>3：到达视图<br>4：再返回给中间件<br>5：返回给wsgi</p>
+<h2 id="session是什么"><a href="#session是什么" class="headerlink" title="session是什么"></a>session是什么</h2><p>1：保存在服务端的键值对<br>2：服务端生成随机字符串，把值返回给客户端作为cookie</p>
+<h2 id="csrf-xss"><a href="#csrf-xss" class="headerlink" title="csrf-xss"></a>csrf-xss</h2><p>1：xss（用户输入js代码）<br>alert()<br>2：csrf<br>用于在post请求时：携带随机字符串</p>
+<h1 id="day77-03-验证流程分析"><a href="#day77-03-验证流程分析" class="headerlink" title="day77-03-验证流程分析"></a>day77-03-验证流程分析</h1><h2 id="form组件的作用"><a href="#form组件的作用" class="headerlink" title="form组件的作用"></a>form组件的作用</h2><p>1：用于用户提交数据校验<br>2：保留上次输入内容</p>
+<h2 id="form目前的三个方法"><a href="#form目前的三个方法" class="headerlink" title="form目前的三个方法"></a>form目前的三个方法</h2><p>1：obj = validform(request.POST)<br>2：obj.is_valid()<br>3：obj.cleaned_data() -返回的是一个字典<br>4：obj.errors  -返回是对象</p>
+<h2 id="form验证过程的讲解"><a href="#form验证过程的讲解" class="headerlink" title="form验证过程的讲解"></a>form验证过程的讲解</h2><p><img src="detail.png" alt></p>
+<h1 id="day77-04-form和ajax验证"><a href="#day77-04-form和ajax验证" class="headerlink" title="day77-04-form和ajax验证"></a>day77-04-form和ajax验证</h1><h2 id="ajax提交form表单的内容"><a href="#ajax提交form表单的内容" class="headerlink" title="ajax提交form表单的内容"></a>ajax提交form表单的内容</h2><p><img src="form.png" alt></p>
+
       
     </div>
     
@@ -388,8 +398,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -440,6 +459,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-02-内容回顾"><span class="nav-number">1.</span> <span class="nav-text">day77-02-内容回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求生命周期"><span class="nav-number">1.1.</span> <span class="nav-text">请求生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session是什么"><span class="nav-number">1.2.</span> <span class="nav-text">session是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#csrf-xss"><span class="nav-number">1.3.</span> <span class="nav-text">csrf-xss</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-03-验证流程分析"><span class="nav-number">2.</span> <span class="nav-text">day77-03-验证流程分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#form组件的作用"><span class="nav-number">2.1.</span> <span class="nav-text">form组件的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#form目前的三个方法"><span class="nav-number">2.2.</span> <span class="nav-text">form目前的三个方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#form验证过程的讲解"><span class="nav-number">2.3.</span> <span class="nav-text">form验证过程的讲解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-04-form和ajax验证"><span class="nav-number">3.</span> <span class="nav-text">day77-04-form和ajax验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax提交form表单的内容"><span class="nav-number">3.1.</span> <span class="nav-text">ajax提交form表单的内容</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
