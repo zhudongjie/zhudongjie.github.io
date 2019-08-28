@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://twilight.com/2019/08/28/day76-04-mvc-mtv/process_view.png">
 <meta property="og:image" content="http://twilight.com/2019/08/28/day76-04-mvc-mtv/return.png">
-<meta property="og:updated_time" content="2019-08-28T13:00:25.367Z">
+<meta property="og:updated_time" content="2019-08-28T13:07:59.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="day76-04-mvc&amp;mtv">
 <meta name="twitter:description" content="day76-04-mvc&amp;amp;mtvMVCmodel(模板) + view(html模板) + controlers(业务处理) MTVmodel(模板) + templates(html模板) + view(业务处理) day76-05-中间件什么是中间件1：书写类-方法： process_requests(requet) process_response(request,response)">
@@ -313,7 +313,9 @@
 <pre><code>process_requests(requet)
 process_response(request,response)
 process_requests(requet) 可以返回return request，不能返回response
-process_response(request,response) 可以返回response</code></pre><h1 id="day76-06-中间件"><a href="#day76-06-中间件" class="headerlink" title="day76-06-中间件"></a>day76-06-中间件</h1><h2 id="中间件的其他方法process-view"><a href="#中间件的其他方法process-view" class="headerlink" title="中间件的其他方法process_view()"></a>中间件的其他方法process_view()</h2><p>中间的写法<br><img src="process_view.png" alt="配置图片"><br>执行顺序的打印<br><img src="return.png" alt="配置图片"></p>
+process_response(request,response) 可以返回response</code></pre><h1 id="day76-06-中间件"><a href="#day76-06-中间件" class="headerlink" title="day76-06-中间件"></a>day76-06-中间件</h1><h2 id="中间件的其他方法process-view"><a href="#中间件的其他方法process-view" class="headerlink" title="中间件的其他方法process_view()"></a>中间件的其他方法process_view()</h2><p>中间的写法</p>
+<p><img src="process_view.png" alt="配置图片"><br>执行顺序的打印</p>
+<p><img src="return.png" alt="配置图片"></p>
 <pre><code>中间件在process_request中return request时？？</code></pre><h1 id="day76-07-中间件"><a href="#day76-07-中间件" class="headerlink" title="day76-07-中间件"></a>day76-07-中间件</h1><h2 id="中间件的其他方法process-exception"><a href="#中间件的其他方法process-exception" class="headerlink" title="中间件的其他方法process_exception"></a>中间件的其他方法process_exception</h2><p>这里的process_exception方法在django11中不适用？？？？？</p>
 <h1 id="day76-08-中间件"><a href="#day76-08-中间件" class="headerlink" title="day76-08-中间件"></a>day76-08-中间件</h1><h2 id="中间件的应用"><a href="#中间件的应用" class="headerlink" title="中间件的应用"></a>中间件的应用</h2><p>批量对request做拦截<br>对指定的request返回缓存中的内容</p>
 <h1 id="day76-09-初识form"><a href="#day76-09-初识form" class="headerlink" title="day76-09-初识form"></a>day76-09-初识form</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>13:22<br>1：无法记住页面提交的内容<br>2：输入长度的限制<br>3：重复对用户数据进行校验</p>
