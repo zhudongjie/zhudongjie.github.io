@@ -88,7 +88,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://twilight.com/2019/08/28/day77/detail.png">
 <meta property="og:image" content="http://twilight.com/2019/08/28/day77/form.png">
-<meta property="og:updated_time" content="2019-08-28T14:20:17.389Z">
+<meta property="og:image" content="http://twilight.com/2019/08/28/day77/front.png">
+<meta property="og:updated_time" content="2019-08-29T13:03:36.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="day77">
 <meta name="twitter:description" content="day77-02-内容回顾请求生命周期1：先经过wsgi2：到达django的中间件3：到达视图4：再返回给中间件5：返回给wsgi session是什么1：保存在服务端的键值对2：服务端生成随机字符串，把值返回给客户端作为cookie csrf-xss1：xss（用户输入js代码）alert()2：csrf用于在post请求时：携带随机字符串 day77-03-验证流程分析form组件的作用1：">
@@ -314,6 +315,37 @@
 <h2 id="form目前的三个方法"><a href="#form目前的三个方法" class="headerlink" title="form目前的三个方法"></a>form目前的三个方法</h2><p>1：obj = validform(request.POST)<br>2：obj.is_valid()<br>3：obj.cleaned_data() -返回的是一个字典<br>4：obj.errors  -返回是对象</p>
 <h2 id="form验证过程的讲解"><a href="#form验证过程的讲解" class="headerlink" title="form验证过程的讲解"></a>form验证过程的讲解</h2><p><img src="detail.png" alt></p>
 <h1 id="day77-04-form和ajax验证"><a href="#day77-04-form和ajax验证" class="headerlink" title="day77-04-form和ajax验证"></a>day77-04-form和ajax验证</h1><h2 id="ajax提交form表单的内容"><a href="#ajax提交form表单的内容" class="headerlink" title="ajax提交form表单的内容"></a>ajax提交form表单的内容</h2><p><img src="form.png" alt></p>
+<h1 id="day77-05-alax显示错误信息"><a href="#day77-05-alax显示错误信息" class="headerlink" title="day77-05-alax显示错误信息"></a>day77-05-alax显示错误信息</h1><h2 id="js语法"><a href="#js语法" class="headerlink" title="js语法"></a>js语法</h2><p>1：创建标签</p>
+<pre><code>var tag = document.createElement(&apos;span&apos;)</code></pre><p>2：each的使用</p>
+<pre><code>$.each(iter,function(index,value){
+    tag.innerHtml = value[0];
+})</code></pre><p>3：find查找标签</p>
+<pre><code>$(&quot;#f1&quot;).find(&quot;input[name=&apos;+ index+&apos;]&quot;)
+拼接字符串，明确字符的开头和结尾</code></pre><p>4：ajax提交数据</p>
+<pre><code>返回数据的类型
+datatype:JSON
+$.ajax({
+    url:&quot;xxx/xxx&quot;,
+    data:&quot;xxx&quot;,
+    type:&quot;post&quot;,
+    datatype:&quot;JSON&quot;,
+    success:function(args){
+        console.log(args)
+    },
+    })</code></pre><h1 id="day77-08-form组件内容梳理"><a href="#day77-08-form组件内容梳理" class="headerlink" title="day77-08-form组件内容梳理"></a>day77-08-form组件内容梳理</h1><h2 id="06-07-09缺失-pass"><a href="#06-07-09缺失-pass" class="headerlink" title="06-07-09缺失-pass"></a>06-07-09缺失-pass</h2><h1 id="day77-10-上节内容梳理"><a href="#day77-10-上节内容梳理" class="headerlink" title="day77-10-上节内容梳理"></a>day77-10-上节内容梳理</h1><h2 id="缺失两节"><a href="#缺失两节" class="headerlink" title="缺失两节"></a>缺失两节</h2><h1 id="day77-12-班级管理实例"><a href="#day77-12-班级管理实例" class="headerlink" title="day77-12-班级管理实例"></a>day77-12-班级管理实例</h1><h2 id="如何通过form的方式保留用户提交的数据"><a href="#如何通过form的方式保留用户提交的数据" class="headerlink" title="如何通过form的方式保留用户提交的数据"></a>如何通过form的方式保留用户提交的数据</h2><p>1：通过form生成表单<br>classForm(Form):<br>    title = fields.Re(‘’)</p>
+<p>在前端就会生成form表单</p>
+<p>以下是在视图中的写法：</p>
+<pre><code>def add_class(request):
+if request.method == &quot;GET&quot;:
+    obj = classForm()
+    return render(request,&apos;xxx.html&apos;,{&quot;obj&quot;:obj})
+else:
+    obj = classForm(request.POST)
+    if obj.is_valid:
+        modles.XX.objects.create(**obj.cleaned_data)
+        return redirect(&apos;/class_list/&apos;)
+    return render(request,&apos;add_class.html&apos;,{&quot;obj&quot;:obj})</code></pre><p>以下是在前端中的写法：<br><img src="front.png" alt></p>
+<h1 id="day77-14-样式调整"><a href="#day77-14-样式调整" class="headerlink" title="day77-14-样式调整"></a>day77-14-样式调整</h1><p>1：pass</p>
 
       
     </div>
@@ -347,6 +379,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/29/lasted-day63/" rel="prev" title="lasted day63">
+                lasted day63 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -423,7 +459,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -469,7 +505,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-02-内容回顾"><span class="nav-number">1.</span> <span class="nav-text">day77-02-内容回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求生命周期"><span class="nav-number">1.1.</span> <span class="nav-text">请求生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session是什么"><span class="nav-number">1.2.</span> <span class="nav-text">session是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#csrf-xss"><span class="nav-number">1.3.</span> <span class="nav-text">csrf-xss</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-03-验证流程分析"><span class="nav-number">2.</span> <span class="nav-text">day77-03-验证流程分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#form组件的作用"><span class="nav-number">2.1.</span> <span class="nav-text">form组件的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#form目前的三个方法"><span class="nav-number">2.2.</span> <span class="nav-text">form目前的三个方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#form验证过程的讲解"><span class="nav-number">2.3.</span> <span class="nav-text">form验证过程的讲解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-04-form和ajax验证"><span class="nav-number">3.</span> <span class="nav-text">day77-04-form和ajax验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax提交form表单的内容"><span class="nav-number">3.1.</span> <span class="nav-text">ajax提交form表单的内容</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-02-内容回顾"><span class="nav-number">1.</span> <span class="nav-text">day77-02-内容回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求生命周期"><span class="nav-number">1.1.</span> <span class="nav-text">请求生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session是什么"><span class="nav-number">1.2.</span> <span class="nav-text">session是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#csrf-xss"><span class="nav-number">1.3.</span> <span class="nav-text">csrf-xss</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-03-验证流程分析"><span class="nav-number">2.</span> <span class="nav-text">day77-03-验证流程分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#form组件的作用"><span class="nav-number">2.1.</span> <span class="nav-text">form组件的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#form目前的三个方法"><span class="nav-number">2.2.</span> <span class="nav-text">form目前的三个方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#form验证过程的讲解"><span class="nav-number">2.3.</span> <span class="nav-text">form验证过程的讲解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-04-form和ajax验证"><span class="nav-number">3.</span> <span class="nav-text">day77-04-form和ajax验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax提交form表单的内容"><span class="nav-number">3.1.</span> <span class="nav-text">ajax提交form表单的内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-05-alax显示错误信息"><span class="nav-number">4.</span> <span class="nav-text">day77-05-alax显示错误信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#js语法"><span class="nav-number">4.1.</span> <span class="nav-text">js语法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-08-form组件内容梳理"><span class="nav-number">5.</span> <span class="nav-text">day77-08-form组件内容梳理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#06-07-09缺失-pass"><span class="nav-number">5.1.</span> <span class="nav-text">06-07-09缺失-pass</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-10-上节内容梳理"><span class="nav-number">6.</span> <span class="nav-text">day77-10-上节内容梳理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缺失两节"><span class="nav-number">6.1.</span> <span class="nav-text">缺失两节</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-12-班级管理实例"><span class="nav-number">7.</span> <span class="nav-text">day77-12-班级管理实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何通过form的方式保留用户提交的数据"><span class="nav-number">7.1.</span> <span class="nav-text">如何通过form的方式保留用户提交的数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day77-14-样式调整"><span class="nav-number">8.</span> <span class="nav-text">day77-14-样式调整</span></a></li></ol></div>
             
 
           </div>
