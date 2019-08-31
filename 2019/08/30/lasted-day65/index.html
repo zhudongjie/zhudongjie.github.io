@@ -79,20 +79,17 @@
 
 
 
-<meta name="description" content="day76-04-mvc&amp;amp;mtvMVCmodel(模板) + view(html模板) + controlers(业务处理) MTVmodel(模板) + templates(html模板) + view(业务处理) day76-05-中间件什么是中间件1：书写类-方法： process_requests(requet) process_response(request,response)">
+<meta name="description" content="day65-02-组件，静态文件相关1：include的使用 {% include &apos;xxx.html&apos; %}2：static_url在setting中static_url指的是静态文件的路径在前端页面的使用 {% load static %}  {% static &apos;&apos; %}3：get_static_prefix只会获得在settings里设置的静态文件的路径在前端的使用 {% get_stat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="day76-04-mvc&amp;mtv">
-<meta property="og:url" content="http://twilight.com/2019/08/28/day76-04-mvc-mtv/index.html">
+<meta property="og:title" content="lasted day65">
+<meta property="og:url" content="http://twilight.com/2019/08/30/lasted-day65/index.html">
 <meta property="og:site_name" content="where do we go">
-<meta property="og:description" content="day76-04-mvc&amp;amp;mtvMVCmodel(模板) + view(html模板) + controlers(业务处理) MTVmodel(模板) + templates(html模板) + view(业务处理) day76-05-中间件什么是中间件1：书写类-方法： process_requests(requet) process_response(request,response)">
+<meta property="og:description" content="day65-02-组件，静态文件相关1：include的使用 {% include &apos;xxx.html&apos; %}2：static_url在setting中static_url指的是静态文件的路径在前端页面的使用 {% load static %}  {% static &apos;&apos; %}3：get_static_prefix只会获得在settings里设置的静态文件的路径在前端的使用 {% get_stat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://twilight.com/2019/08/28/day76-04-mvc-mtv/process_view.png">
-<meta property="og:image" content="http://twilight.com/2019/08/28/day76-04-mvc-mtv/return.png">
-<meta property="og:updated_time" content="2019-08-28T13:07:59.618Z">
+<meta property="og:updated_time" content="2019-08-31T13:33:10.680Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="day76-04-mvc&amp;mtv">
-<meta name="twitter:description" content="day76-04-mvc&amp;amp;mtvMVCmodel(模板) + view(html模板) + controlers(业务处理) MTVmodel(模板) + templates(html模板) + view(业务处理) day76-05-中间件什么是中间件1：书写类-方法： process_requests(requet) process_response(request,response)">
-<meta name="twitter:image" content="http://twilight.com/2019/08/28/day76-04-mvc-mtv/process_view.png">
+<meta name="twitter:title" content="lasted day65">
+<meta name="twitter:description" content="day65-02-组件，静态文件相关1：include的使用 {% include &apos;xxx.html&apos; %}2：static_url在setting中static_url指的是静态文件的路径在前端页面的使用 {% load static %}  {% static &apos;&apos; %}3：get_static_prefix只会获得在settings里设置的静态文件的路径在前端的使用 {% get_stat">
 
 
 
@@ -122,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://twilight.com/2019/08/28/day76-04-mvc-mtv/">
+  <link rel="canonical" href="http://twilight.com/2019/08/30/lasted-day65/">
 
 
 
 
 
-  <title>day76-04-mvc&mtv | where do we go</title>
+  <title>lasted day65 | where do we go</title>
   
 
 
@@ -235,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://twilight.com/2019/08/28/day76-04-mvc-mtv/">
+    <link itemprop="mainEntityOfPage" href="http://twilight.com/2019/08/30/lasted-day65/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="林冲">
@@ -252,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">day76-04-mvc&mtv</h1>
+          <h1 class="post-title" itemprop="name headline">lasted day65</h1>
         
 
         <div class="post-meta">
@@ -264,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-28T14:07:58+08:00">
-                2019-08-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-30T15:04:37+08:00">
+                2019-08-30
               </time>
             
 
@@ -307,33 +304,19 @@
       
 
       
-        <h1 id="day76-04-mvc-amp-mtv"><a href="#day76-04-mvc-amp-mtv" class="headerlink" title="day76-04-mvc&amp;mtv"></a>day76-04-mvc&amp;mtv</h1><h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>model(模板) + view(html模板) + controlers(业务处理)</p>
-<h2 id="MTV"><a href="#MTV" class="headerlink" title="MTV"></a>MTV</h2><p>model(模板) + templates(html模板) + view(业务处理)</p>
-<h1 id="day76-05-中间件"><a href="#day76-05-中间件" class="headerlink" title="day76-05-中间件"></a>day76-05-中间件</h1><h2 id="什么是中间件"><a href="#什么是中间件" class="headerlink" title="什么是中间件"></a>什么是中间件</h2><p>1：书写类-方法：</p>
-<pre><code>process_requests(requet)
-process_response(request,response)
-process_requests(requet) 可以返回return request，不能返回response
-process_response(request,response) 可以返回response</code></pre><h1 id="day76-06-中间件"><a href="#day76-06-中间件" class="headerlink" title="day76-06-中间件"></a>day76-06-中间件</h1><h2 id="中间件的其他方法process-view"><a href="#中间件的其他方法process-view" class="headerlink" title="中间件的其他方法process_view()"></a>中间件的其他方法process_view()</h2><p>中间的写法</p>
-<p><img src="process_view.png" alt="配置图片"><br>执行顺序的打印</p>
-<p><img src="return.png" alt="配置图片"></p>
-<pre><code>中间件在process_request中return request时？？</code></pre><h1 id="day76-07-中间件"><a href="#day76-07-中间件" class="headerlink" title="day76-07-中间件"></a>day76-07-中间件</h1><h2 id="中间件的其他方法process-exception"><a href="#中间件的其他方法process-exception" class="headerlink" title="中间件的其他方法process_exception"></a>中间件的其他方法process_exception</h2><p>这里的process_exception方法在django11中不适用？？？？？</p>
-<h1 id="day76-08-中间件"><a href="#day76-08-中间件" class="headerlink" title="day76-08-中间件"></a>day76-08-中间件</h1><h2 id="中间件的应用"><a href="#中间件的应用" class="headerlink" title="中间件的应用"></a>中间件的应用</h2><p>批量对request做拦截<br>对指定的request返回缓存中的内容</p>
-<h1 id="day76-09-初识form"><a href="#day76-09-初识form" class="headerlink" title="day76-09-初识form"></a>day76-09-初识form</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>13:22<br>1：无法记住页面提交的内容<br>2：输入长度的限制<br>3：重复对用户数据进行校验</p>
-<h2 id="定义规则"><a href="#定义规则" class="headerlink" title="定义规则"></a>定义规则</h2><p>1:定义：</p>
-<pre><code>from django.forms import form
-from django.forms import fields 
-class validform(Form):
-    xx = fields.CharField(required=True,max_length,min_length,error_message={
-        &quot;required&quot;:&quot;用户名错误&quot;，
-        &quot;max_length&quot;:&quot;用户名错误&quot;，
-        &quot;min_length&quot;:&quot;用户名错误&quot;，
-        })</code></pre><p>2：使用<br>    from中定义的内容，应该和html中定义的name的属性一致<br>    html中标签的内容要与form中定义的字段一致</p>
-<pre><code>obj = validform(request.POST)
-v = obj.is_valid()
-#错误信息
-obj.errors
-#正确信息
-obj.cleaned_data</code></pre>
+        <h1 id="day65-02-组件，静态文件相关"><a href="#day65-02-组件，静态文件相关" class="headerlink" title="day65-02-组件，静态文件相关"></a>day65-02-组件，静态文件相关</h1><p>1：include的使用</p>
+<pre><code>{% include 'xxx.html' %}</code></pre><p>2：static_url<br>在setting中static_url指的是静态文件的路径<br>在前端页面的使用</p>
+<pre><code>{% load static %}
+
+{% static '' %}</code></pre><p>3：get_static_prefix<br>只会获得在settings里设置的静态文件的路径<br>在前端的使用</p>
+<pre><code>{% get_static_prefix %}&apos;静态文件夹里的路径&apos;</code></pre><h1 id="day65-03-组件，静态文件总结"><a href="#day65-03-组件，静态文件总结" class="headerlink" title="day65-03-组件，静态文件总结"></a>day65-03-组件，静态文件总结</h1><p>没什么好总结的，很简单</p>
+<h1 id="day65-04-模板语法simple-tag和inclusion-tag"><a href="#day65-04-模板语法simple-tag和inclusion-tag" class="headerlink" title="day65-04-模板语法simple_tag和inclusion_tag"></a>day65-04-模板语法simple_tag和inclusion_tag</h1><h2 id="simple-tag-鸡肋"><a href="#simple-tag-鸡肋" class="headerlink" title="simple_tag-鸡肋"></a>simple_tag-鸡肋</h2><p>与过滤器相比，可以接受多个参数<br>写法</p>
+<pre><code>@register.simple_tag
+def join_str(*args,**kwargs)
+    return &apos;_&apos;.join(args)</code></pre><p>在前端的使用</p>
+<pre><code>{% load xxx %}
+{% join_str 'i' 'like' 'kitty' %}</code></pre><h2 id="inclusion-tag-多用于返回html代码段-鸡肋"><a href="#inclusion-tag-多用于返回html代码段-鸡肋" class="headerlink" title="inclusion_tag-多用于返回html代码段-鸡肋"></a>inclusion_tag-多用于返回html代码段-鸡肋</h2><p>地址：<br><a href="https://www.cnblogs.com/maple-shaw/articles/9333821.html" target="_blank" rel="noopener">https://www.cnblogs.com/maple-shaw/articles/9333821.html</a></p>
+<h1 id="day65-05-视图FBV-amp-CBV"><a href="#day65-05-视图FBV-amp-CBV" class="headerlink" title="day65-05-视图FBV&amp;CBV"></a>day65-05-视图FBV&amp;CBV</h1><h1 id="day65-06-视图CBV源码流程"><a href="#day65-06-视图CBV源码流程" class="headerlink" title="day65-06-视图CBV源码流程"></a>day65-06-视图CBV源码流程</h1><h1 id="day65-07-视图之使用装饰器的方法"><a href="#day65-07-视图之使用装饰器的方法" class="headerlink" title="day65-07-视图之使用装饰器的方法"></a>day65-07-视图之使用装饰器的方法</h1>
       
     </div>
     
@@ -357,8 +340,8 @@ obj.cleaned_data</code></pre>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/28/day75-manytomany/" rel="next" title="day75 manytomany自关联，foreignkey自关联">
-                <i class="fa fa-chevron-left"></i> day75 manytomany自关联，foreignkey自关联
+              <a href="/2019/08/29/lasted-day64/" rel="next" title="lasted day64">
+                <i class="fa fa-chevron-left"></i> lasted day64
               </a>
             
           </div>
@@ -367,8 +350,8 @@ obj.cleaned_data</code></pre>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/28/day77/" rel="prev" title="day77">
-                day77 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/30/new-stock-info/" rel="prev" title="new stock info">
+                new stock info <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -492,7 +475,7 @@ obj.cleaned_data</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day76-04-mvc-amp-mtv"><span class="nav-number">1.</span> <span class="nav-text">day76-04-mvc&amp;mtv</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC"><span class="nav-number">1.1.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MTV"><span class="nav-number">1.2.</span> <span class="nav-text">MTV</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day76-05-中间件"><span class="nav-number">2.</span> <span class="nav-text">day76-05-中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是中间件"><span class="nav-number">2.1.</span> <span class="nav-text">什么是中间件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day76-06-中间件"><span class="nav-number">3.</span> <span class="nav-text">day76-06-中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件的其他方法process-view"><span class="nav-number">3.1.</span> <span class="nav-text">中间件的其他方法process_view()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day76-07-中间件"><span class="nav-number">4.</span> <span class="nav-text">day76-07-中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件的其他方法process-exception"><span class="nav-number">4.1.</span> <span class="nav-text">中间件的其他方法process_exception</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day76-08-中间件"><span class="nav-number">5.</span> <span class="nav-text">day76-08-中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件的应用"><span class="nav-number">5.1.</span> <span class="nav-text">中间件的应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day76-09-初识form"><span class="nav-number">6.</span> <span class="nav-text">day76-09-初识form</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">6.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义规则"><span class="nav-number">6.2.</span> <span class="nav-text">定义规则</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-02-组件，静态文件相关"><span class="nav-number">1.</span> <span class="nav-text">day65-02-组件，静态文件相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-03-组件，静态文件总结"><span class="nav-number">2.</span> <span class="nav-text">day65-03-组件，静态文件总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-04-模板语法simple-tag和inclusion-tag"><span class="nav-number">3.</span> <span class="nav-text">day65-04-模板语法simple_tag和inclusion_tag</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-tag-鸡肋"><span class="nav-number">3.1.</span> <span class="nav-text">simple_tag-鸡肋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inclusion-tag-多用于返回html代码段-鸡肋"><span class="nav-number">3.2.</span> <span class="nav-text">inclusion_tag-多用于返回html代码段-鸡肋</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-05-视图FBV-amp-CBV"><span class="nav-number">4.</span> <span class="nav-text">day65-05-视图FBV&amp;CBV</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-06-视图CBV源码流程"><span class="nav-number">5.</span> <span class="nav-text">day65-06-视图CBV源码流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-07-视图之使用装饰器的方法"><span class="nav-number">6.</span> <span class="nav-text">day65-07-视图之使用装饰器的方法</span></a></li></ol></div>
             
 
           </div>
