@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="day69-01-内容回顾中间件地址：https://www.cnblogs.com/maple-shaw/p/9333824.html cookie1：是什么保存在浏览器的键值对2：为什么要有cookiehttp是无状态的，每次请求都无关联，无法记住状态3：操作cookie    1:设置cookie        ret = HttpResponse(‘xxx’)        ret.set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lasted-day69">
+<meta property="og:url" content="http://twilight.com/2019/09/04/lasted-day69/index.html">
+<meta property="og:site_name" content="where do we go">
+<meta property="og:description" content="day69-01-内容回顾中间件地址：https://www.cnblogs.com/maple-shaw/p/9333824.html cookie1：是什么保存在浏览器的键值对2：为什么要有cookiehttp是无状态的，每次请求都无关联，无法记住状态3：操作cookie    1:设置cookie        ret = HttpResponse(‘xxx’)        ret.set">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://twilight.com/2019/09/04/lasted-day69/model.png">
+<meta property="og:image" content="http://twilight.com/2019/09/04/lasted-day69/model2.png">
+<meta property="og:image" content="http://twilight.com/2019/09/04/lasted-day69/onefield.png">
+<meta property="og:image" content="http://twilight.com/2019/09/04/lasted-day69/middle.png">
+<meta property="og:image" content="http://twilight.com/2019/09/04/lasted-day69/flow.png">
+<meta property="og:updated_time" content="2019-09-20T11:54:28.218Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lasted-day69">
+<meta name="twitter:description" content="day69-01-内容回顾中间件地址：https://www.cnblogs.com/maple-shaw/p/9333824.html cookie1：是什么保存在浏览器的键值对2：为什么要有cookiehttp是无状态的，每次请求都无关联，无法记住状态3：操作cookie    1:设置cookie        ret = HttpResponse(‘xxx’)        ret.set">
+<meta name="twitter:image" content="http://twilight.com/2019/09/04/lasted-day69/model.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://twilight.com/2019/09/04/lasted-day69/">
+
+
+
+
+
+  <title>lasted-day69 | where do we go</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">where do we go</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://twilight.com/2019/09/04/lasted-day69/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林冲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="where do we go">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">lasted-day69</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-04T10:05:53+08:00">
+                2019-09-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">阅读数</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="day69-01-内容回顾"><a href="#day69-01-内容回顾" class="headerlink" title="day69-01-内容回顾"></a>day69-01-内容回顾</h1><p>中间件地址：<br><a href="https://www.cnblogs.com/maple-shaw/p/9333824.html" target="_blank" rel="noopener">https://www.cnblogs.com/maple-shaw/p/9333824.html</a></p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>1：是什么<br>保存在浏览器的键值对<br>2：为什么要有cookie<br>http是无状态的，每次请求都无关联，无法记住状态<br>3：操作cookie<br>    1:设置cookie<br>        ret = HttpResponse(‘xxx’)<br>        ret.set_cookie(key,value,max_age=5)<br>    2：删除cookie<br>        ret.delete_cookie(key)<br>4：session<br>    1：是什么<br>    保存在浏览器上的一组键值对<br>    2：为什么要有<br>    cookie存放用户信息在浏览器上不安全<br>    cookie的长度有限<br>    3：操作session<br>        1：设置<br>        request.session[key] = value<br>        request.session.set_default[key] = value<br>        2：获取<br>        request.session[key]<br>        request.session.get(key)<br>        3：删除session<br>        del request.session[key]<br>        request.session.delete()   删除该用户下的所有session，不删除cookie<br>        request.session.flush()    删除该用户下的所有session，同时删除cookie<br>        4：设置超时时间<br>        request.session.set_expiry()<br>        5：清除所有过期的session<br>        request.session.clear_expired()<br>    4：配置<br>    默认session存放的位置<br>    from django.conf import globae_settings<br>    # Whether to save the session data on every request.<br>    SESSION_SAVE_EVERY_REQUEST = False<br>    # Whether a user’s session cookie expires when the Web browser is closed.<br>    SESSION_EXPIRE_AT_BROWSER_CLOSE = False<br>    存放session数据表的文件<br>    from django.contrib.sessions.backends import db</p>
+<p>5：ORM<br>1：返回对象列表</p>
+<pre><code>all()
+filter()
+exclude()
+order_by()
+reverse()
+values()      内部元素是字典
+value_list()  内部元素是元祖
+distinct()</code></pre><p>2：返回对象的</p>
+<pre><code>get()
+first()
+last()</code></pre><p>3：返回是布尔值的</p>
+<pre><code>exists()</code></pre><p>4：单表的双下划线</p>
+<pre><code>__gt
+__lt
+__gte
+__lte
+__in = []
+__range = []
+__contains = &quot;&quot;</code></pre><h1 id="day69-02-内容回顾"><a href="#day69-02-内容回顾" class="headerlink" title="day69-02-内容回顾"></a>day69-02-内容回顾</h1><h2 id="表结构设计"><a href="#表结构设计" class="headerlink" title="表结构设计"></a>表结构设计</h2><p>图一：<br><img src="model.png" alt><br>图二：<br>chioce的使用<br>    第一个是存入数据库的值<br><img src="model2.png" alt><br>拆表：one-to-onefield -不常用的字段放在另一张表中<br><img src="onefield.png" alt></p>
+<h1 id="day69-05-内容回顾三"><a href="#day69-05-内容回顾三" class="headerlink" title="day69-05-内容回顾三"></a>day69-05-内容回顾三</h1><p>aggregate 聚合  终止字句<br>annotate  分组  前面有values的时候，按照values的内容分组<br>                前面没有values的时候，按照数据表model来分组</p>
+<h1 id="day69-06-请求生命周期"><a href="#day69-06-请求生命周期" class="headerlink" title="day69-06-请求生命周期"></a>day69-06-请求生命周期</h1><h2 id="django中间件的位置"><a href="#django中间件的位置" class="headerlink" title="django中间件的位置"></a>django中间件的位置</h2><p>图示：<br><img src="middle.png" alt></p>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p>1：什么是中间件<br>    处理全局范围请求与相应的钩子</p>
+<h1 id="day69-07-中间件值process-request方法"><a href="#day69-07-中间件值process-request方法" class="headerlink" title="day69-07-中间件值process_request方法"></a>day69-07-中间件值process_request方法</h1><h2 id="中间件整体的注意事项"><a href="#中间件整体的注意事项" class="headerlink" title="中间件整体的注意事项"></a>中间件整体的注意事项</h2><pre><code>参数  执行时间  执行顺序  返回值
+process_response
+process_template_response
+process_request
+process_view
+process_exception</code></pre><h2 id="书写中间件"><a href="#书写中间件" class="headerlink" title="书写中间件"></a>书写中间件</h2><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><pre><code>1：书写中间件（继承自 MiddlewareMixin）
+2：在settings中应用中间件（）</code></pre><h3 id="具体的写法"><a href="#具体的写法" class="headerlink" title="具体的写法"></a>具体的写法</h3><pre><code>from django.utils.deprecation import MiddlewareMixin
+
+process_request
+1：执行时间
+    在视图函数执行之前
+2：参数
+    request  : 和视图中的request参数一致
+3：执行顺序
+    中间件的执行顺序和settings中的执行顺序一致
+4：返回值
+    返回值是None -- normal
+    返回值是response对象时   -- 直接返回</code></pre><h1 id="day69-08-中间件值process-response方法"><a href="#day69-08-中间件值process-response方法" class="headerlink" title="day69-08-中间件值process_response方法"></a>day69-08-中间件值process_response方法</h1><h2 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h2><pre><code>process_response
+1：执行时间
+    在视图函数执行之后
+2：参数 request response
+    request  : 和视图中的request参数一致
+3：返回值是response
+
+4：执行顺序
+    按照注册顺序倒序执行</code></pre><h1 id="day69-09-中间件值process-view方法"><a href="#day69-09-中间件值process-view方法" class="headerlink" title="day69-09-中间件值process_view方法"></a>day69-09-中间件值process_view方法</h1><h2 id="无视频"><a href="#无视频" class="headerlink" title="无视频"></a>无视频</h2><h1 id="day69-10-中间件值process-exception方法"><a href="#day69-10-中间件值process-exception方法" class="headerlink" title="day69-10-中间件值process_exception方法"></a>day69-10-中间件值process_exception方法</h1><pre><code>1：执行时间
+    在视图函数之后
+    在process_response之前
+    有触发条件，有异常才执行
+2：参数
+    错误信息对象
+3：返回值
+    是None，---正常的normal
+    是response的时候，---注册顺序之前的process_response不在执行
+
+4：按照注册顺序倒序执行
+5：返回值</code></pre><h1 id="day69-11-中间件值process-template-response方法"><a href="#day69-11-中间件值process-template-response方法" class="headerlink" title="day69-11-中间件值process_template_response方法"></a>day69-11-中间件值process_template_response方法</h1><pre><code>1：执行时间
+    触发条件（response有render方法的时候）
+2：</code></pre><h1 id="day69-12-中间件值执行流程梳理"><a href="#day69-12-中间件值执行流程梳理" class="headerlink" title="day69-12-中间件值执行流程梳理"></a>day69-12-中间件值执行流程梳理</h1><h2 id="useless"><a href="#useless" class="headerlink" title="useless"></a>useless</h2><h1 id="day69-13-work-dispatch"><a href="#day69-13-work-dispatch" class="headerlink" title="day69-13-work dispatch"></a>day69-13-work dispatch</h1><h1 id="day69-14-django请求生命周期完整过程"><a href="#day69-14-django请求生命周期完整过程" class="headerlink" title="day69-14-django请求生命周期完整过程"></a>day69-14-django请求生命周期完整过程</h1><p>图示：<br><img src="flow.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/03/lasted-day68/" rel="next" title="lasted day68">
+                <i class="fa fa-chevron-left"></i> lasted day68
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/05/lasted-day70/" rel="prev" title="lasted day70">
+                lasted day70 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林冲</p>
+              <p class="site-description motion-element" itemprop="description">找到你了</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-01-内容回顾"><span class="nav-number">1.</span> <span class="nav-text">day69-01-内容回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">1.1.</span> <span class="nav-text">cookie</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-02-内容回顾"><span class="nav-number">2.</span> <span class="nav-text">day69-02-内容回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表结构设计"><span class="nav-number">2.1.</span> <span class="nav-text">表结构设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-05-内容回顾三"><span class="nav-number">3.</span> <span class="nav-text">day69-05-内容回顾三</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-06-请求生命周期"><span class="nav-number">4.</span> <span class="nav-text">day69-06-请求生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#django中间件的位置"><span class="nav-number">4.1.</span> <span class="nav-text">django中间件的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件"><span class="nav-number">4.2.</span> <span class="nav-text">中间件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-07-中间件值process-request方法"><span class="nav-number">5.</span> <span class="nav-text">day69-07-中间件值process_request方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#中间件整体的注意事项"><span class="nav-number">5.1.</span> <span class="nav-text">中间件整体的注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书写中间件"><span class="nav-number">5.2.</span> <span class="nav-text">书写中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程"><span class="nav-number">5.2.1.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体的写法"><span class="nav-number">5.2.2.</span> <span class="nav-text">具体的写法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-08-中间件值process-response方法"><span class="nav-number">6.</span> <span class="nav-text">day69-08-中间件值process_response方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#详解"><span class="nav-number">6.1.</span> <span class="nav-text">详解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-09-中间件值process-view方法"><span class="nav-number">7.</span> <span class="nav-text">day69-09-中间件值process_view方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无视频"><span class="nav-number">7.1.</span> <span class="nav-text">无视频</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-10-中间件值process-exception方法"><span class="nav-number">8.</span> <span class="nav-text">day69-10-中间件值process_exception方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-11-中间件值process-template-response方法"><span class="nav-number">9.</span> <span class="nav-text">day69-11-中间件值process_template_response方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-12-中间件值执行流程梳理"><span class="nav-number">10.</span> <span class="nav-text">day69-12-中间件值执行流程梳理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#useless"><span class="nav-number">10.1.</span> <span class="nav-text">useless</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-13-work-dispatch"><span class="nav-number">11.</span> <span class="nav-text">day69-13-work dispatch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day69-14-django请求生命周期完整过程"><span class="nav-number">12.</span> <span class="nav-text">day69-14-django请求生命周期完整过程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林冲</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

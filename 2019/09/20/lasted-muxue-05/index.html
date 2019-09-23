@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="01-django的view实现商品列表1：json.dumpms()不能处理datatime的数据类型的数据02-django的serializers使用serializers他可以序列化时间格式的数据###代码示例 import json from django.core import serializers json_data = serializers.serialize(&amp;apos;js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;lasted-muxue-05&#39;">
+<meta property="og:url" content="http://twilight.com/2019/09/20/lasted-muxue-05/index.html">
+<meta property="og:site_name" content="where do we go">
+<meta property="og:description" content="01-django的view实现商品列表1：json.dumpms()不能处理datatime的数据类型的数据02-django的serializers使用serializers他可以序列化时间格式的数据###代码示例 import json from django.core import serializers json_data = serializers.serialize(&amp;apos;js">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://twilight.com/2019/09/20/lasted-muxue-05/response.png">
+<meta property="og:image" content="http://twilight.com/2019/09/20/lasted-muxue-05/rest-response.png">
+<meta property="og:updated_time" content="2019-09-22T11:27:44.922Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="&#39;lasted-muxue-05&#39;">
+<meta name="twitter:description" content="01-django的view实现商品列表1：json.dumpms()不能处理datatime的数据类型的数据02-django的serializers使用serializers他可以序列化时间格式的数据###代码示例 import json from django.core import serializers json_data = serializers.serialize(&amp;apos;js">
+<meta name="twitter:image" content="http://twilight.com/2019/09/20/lasted-muxue-05/response.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://twilight.com/2019/09/20/lasted-muxue-05/">
+
+
+
+
+
+  <title>'lasted-muxue-05' | where do we go</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">where do we go</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://twilight.com/2019/09/20/lasted-muxue-05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林冲">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="where do we go">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">'lasted-muxue-05'</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-20T14:56:05+08:00">
+                2019-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">阅读数</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="01-django的view实现商品列表"><a href="#01-django的view实现商品列表" class="headerlink" title="01-django的view实现商品列表"></a>01-django的view实现商品列表</h1><pre><code>1：json.dumpms()不能处理datatime的数据类型的数据</code></pre><h1 id="02-django的serializers"><a href="#02-django的serializers" class="headerlink" title="02-django的serializers"></a>02-django的serializers</h1><h2 id="使用serializers"><a href="#使用serializers" class="headerlink" title="使用serializers"></a>使用serializers</h2><pre><code>他可以序列化时间格式的数据</code></pre><p>###代码示例</p>
+<pre><code>import json
+from django.core import serializers
+json_data = serializers.serialize(&apos;json&apos;, goods)
+json_data = json.loads(json_data)
+from django.http import HttpResponse, JsonResponse
+return JsonResponse(json_data, safe=False)</code></pre><p>###返回示例<br>    <img src="response.png" alt></p>
+<p>###使用serializers的局限性</p>
+<p>1：返回数据固定，要修改就要重新组织返回的数据格式</p>
+<h1 id="03-django的restframework商品类列表页数据的返回"><a href="#03-django的restframework商品类列表页数据的返回" class="headerlink" title="03-django的restframework商品类列表页数据的返回"></a>03-django的restframework商品类列表页数据的返回</h1><h2 id="安装drf的依赖"><a href="#安装drf的依赖" class="headerlink" title="安装drf的依赖"></a>安装drf的依赖</h2><p>pip install coreapi</p>
+<h2 id="生成drf文档的依赖"><a href="#生成drf文档的依赖" class="headerlink" title="生成drf文档的依赖"></a>生成drf文档的依赖</h2><p>导入<br>from rest_framework.documentation import include_docs_urls<br>在url中写入<br>url(r’^docs/‘,include_docs_urls(title=b’慕学生鲜’))</p>
+<h2 id="使用drf"><a href="#使用drf" class="headerlink" title="使用drf"></a>使用drf</h2><p>在settings的install_apps</p>
+<pre><code>INSTALLED_APPS = [
+...
+&apos;rest_framework&apos;,]</code></pre><h2 id="在url中配置用户认证"><a href="#在url中配置用户认证" class="headerlink" title="在url中配置用户认证"></a>在url中配置用户认证</h2><pre><code>url(r&apos;^api-auth/&apos;, include(&apos;rest_framework.urls&apos;)),</code></pre><h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><p>‘CSRFCheck’ object has no attribute ‘process_request’<br>解决办法<br>1：把django升级到1.11.6及以上。<br>2：在settings文件里添加</p>
+<pre><code>REST_FRAMEWORK = {
+    &quot;DEFAULT_AUTHENTICATION_CLASSES&quot;: []
+}</code></pre><h1 id="04初步使用django的rest-framework"><a href="#04初步使用django的rest-framework" class="headerlink" title="04初步使用django的rest_framework"></a>04初步使用django的rest_framework</h1><h3 id="写serializers文件"><a href="#写serializers文件" class="headerlink" title="写serializers文件"></a>写serializers文件</h3><p>代码示例<br>注意：<br>    这里的字段必须要和数据库里的字段保持一致</p>
+<pre><code>from rest_framework import serializers
+
+class GoodsSerializer(serializers.Serializer):
+    name = serializers.CharField(required=True,max_length=100)
+    click_num = serializers.IntegerField(default=0)
+    goods_front_image = serializers.ImageField()</code></pre><h3 id="在view中使用"><a href="#在view中使用" class="headerlink" title="在view中使用"></a>在view中使用</h3><pre><code>from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import Goods
+from .serializers import GoodsSerializer
+
+class GoodsListView(APIView):
+    &apos;&apos;&apos;
+    list goods
+    &apos;&apos;&apos;
+    def get(self,request,format=None):
+        goods = Goods.objects.all()[:10]
+        goods_serialzer = GoodsSerializer(goods,many=True)
+        return Response(goods_serialzer.data)</code></pre><h3 id="使用rest-framework的好处"><a href="#使用rest-framework的好处" class="headerlink" title="使用rest_framework的好处"></a>使用rest_framework的好处</h3><p>可以根据媒体文件的配置自动加上文件地址<br>返回示例截图：<br><img src="rest-response.png" alt></p>
+<h1 id="05-modelserializer实现商品列表数据的返回"><a href="#05-modelserializer实现商品列表数据的返回" class="headerlink" title="05-modelserializer实现商品列表数据的返回"></a>05-modelserializer实现商品列表数据的返回</h1><p>两个概念<br>1：序列化<br>2：apiview</p>
+<h2 id="login报错修改"><a href="#login报错修改" class="headerlink" title="login报错修改"></a>login报错修改</h2><p>….现在登录不上</p>
+<h2 id="使用serializers-ModelSerializer示例"><a href="#使用serializers-ModelSerializer示例" class="headerlink" title="使用serializers.ModelSerializer示例"></a>使用serializers.ModelSerializer示例</h2><pre><code>from rest_framework import serializers
+from goods.models import Goods
+
+class GoodsSerializer(serializers.ModelSerializer):
+class Meta:
+    model = Goods
+    fields = (&apos;name&apos;,&apos;click_num&apos;,&apos;market_price&apos;,&apos;add_time&apos;)
+    fields = &apos;__all__&apos;  查出所有值</code></pre><h2 id="序列化显示外键示例"><a href="#序列化显示外键示例" class="headerlink" title="序列化显示外键示例"></a>序列化显示外键示例</h2><p>只需要：写，</p>
+<pre><code>from rest_framework import serializers
+from goods.models import Goods,GoodsCategory
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GoodsCategory
+        fields = &quot;__all__&quot;
+
+class GoodsSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+    class Meta:
+        model = Goods
+        fields = &apos;__all__&apos;</code></pre><h1 id="06-generics实现列表页和分页功能"><a href="#06-generics实现列表页和分页功能" class="headerlink" title="06-generics实现列表页和分页功能"></a>06-generics实现列表页和分页功能</h1><h2 id="generics-ListAPIView返回列表页数据"><a href="#generics-ListAPIView返回列表页数据" class="headerlink" title="generics.ListAPIView返回列表页数据"></a>generics.ListAPIView返回列表页数据</h2><p>1：代码示例</p>
+<pre><code>class GoodsListView(generics.ListAPIView):
+    &apos;&apos;&apos;
+    商品列表页
+    &apos;&apos;&apos;
+    queryset = Goods.objects.all()[:10]
+    serializer_class = GoodsSerializer</code></pre><h2 id="分页的配置"><a href="#分页的配置" class="headerlink" title="分页的配置"></a>分页的配置</h2><h3 id="分页报错提示："><a href="#分页报错提示：" class="headerlink" title="分页报错提示："></a>分页报错提示：</h3><p>?: (rest_framework.W001) You have specified a default PAGE_SIZE pagination rest_framework setting,without specifying also a DEFAULT_PAGINATION_CLASS.<br>    HINT: The default for DEFAULT_PAGINATION_CLASS is None. In previous versions this was PageNumberPagination. If you wish to define PAGE_SIZE globally whilst defining pagination_class on a per-view basis you may silence this check.</p>
+<pre><code>解决办法：
+在项目的settings中添加
+&apos;DEFAULT_PAGINATION_CLASS&apos;: &apos;rest_framework.pagination.PageNumberPagination&apos;,</code></pre><h3 id="分页的两种实现方式"><a href="#分页的两种实现方式" class="headerlink" title="分页的两种实现方式"></a>分页的两种实现方式</h3><p>1：在settings里设置，代码如下</p>
+<pre><code>REST_FRAMEWORK = {
+    &quot;PAGE_SIZE&quot;:10,
+    &apos;DEFAULT_PAGINATION_CLASS&apos;: &apos;rest_framework.pagination.PageNumberPagination&apos;,
+    &quot;DEFAULT_AUTHENTICATION_CLASSES&quot;: []
+}</code></pre><p>2：在view中设置<br>见官方说明：<br><a href="https://www.django-rest-framework.org/api-guide/pagination/" target="_blank" rel="noopener">https://www.django-rest-framework.org/api-guide/pagination/</a></p>
+<h1 id="07-viewset和router完成商品列表页"><a href="#07-viewset和router完成商品列表页" class="headerlink" title="07-viewset和router完成商品列表页"></a>07-viewset和router完成商品列表页</h1><p>本节课讲解viewset<br>本课程的所有api的完成都会使用viewset来完成</p>
+<p>导入</p>
+<pre><code>from rest_framework import viewsets</code></pre><p>源码讲解  —</p>
+<pre><code>class GenericViewSet(ViewSetMixin, generics.GenericAPIView)</code></pre><h2 id="使用viewset实现商品列表页数据展示"><a href="#使用viewset实现商品列表页数据展示" class="headerlink" title="使用viewset实现商品列表页数据展示"></a>使用viewset实现商品列表页数据展示</h2><p>步骤view中书写</p>
+<pre><code>from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import Goods
+from .serializers import GoodsSerializer
+from rest_framework import mixins
+from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
+from rest_framework import viewsets
+
+class LargeResultsSetPagination(PageNumberPagination):
+page_size = 20
+page_size_query_param = &apos;page_size&apos;
+max_page_size = 100
+
+
+class GoodsListViewSet(mixins.ListModelMixin,viewsets.GenericViewSet):
+&apos;&apos;&apos;
+商品列表页
+&apos;&apos;&apos;
+queryset = Goods.objects.all().order_by()
+serializer_class = GoodsSerializer
+pagination_class = LargeResultsSetPagination</code></pre><p>urls中的代码</p>
+<pre><code>from goods.views import GoodsListViewSet
+
+goods_list = GoodsListViewSet.as_view({
+    &apos;get&apos;:&apos;list&apos;
+})
+
+urlpatterns = [
+
+#商品列表页
+# url(r&apos;^goods/&apos;,GoodsListView.as_view()),
+url(r&apos;^goods/&apos;,goods_list,name=&apos;goods-list&apos;),</code></pre><p>]</p>
+<h2 id="使用router完成url的配置"><a href="#使用router完成url的配置" class="headerlink" title="使用router完成url的配置"></a>使用router完成url的配置</h2><pre><code>https://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/
+
+在url中导入，注册，和使用
+
+from rest_framework.routers import DefaultRouter
+注册
+router = DefaultRouter()
+router.register(r&apos;goods&apos;, GoodsListViewSet)
+
+使用
+url(r&apos;^&apos;,include(router.urls)),</code></pre><h1 id="08-drf的Apiview、GenericView、Viewset和router的原理分析"><a href="#08-drf的Apiview、GenericView、Viewset和router的原理分析" class="headerlink" title="08-drf的Apiview、GenericView、Viewset和router的原理分析"></a>08-drf的Apiview、GenericView、Viewset和router的原理分析</h1><p>GenericViewSet                  -drf<br>    GenericAPIView                -drf<br>        APIView                 -drf<br>            View                  -django</p>
+<p>mixin<br>    CreateModelMixin<br>    ListModelMixin<br>    RetrieveModelMixin<br>    UpdateModelMixin<br>    DestroyModelMixin</p>
+<h1 id="09-drf的request和response"><a href="#09-drf的request和response" class="headerlink" title="09-drf的request和response"></a>09-drf的request和response</h1><pre><code>https://www.django-rest-framework.org/api-guide/requests/
+https://www.django-rest-framework.org/api-guide/parsers/</code></pre><h1 id="10-drf的过滤"><a href="#10-drf的过滤" class="headerlink" title="10-drf的过滤"></a>10-drf的过滤</h1><h2 id="使用viewset本身的过滤功能"><a href="#使用viewset本身的过滤功能" class="headerlink" title="使用viewset本身的过滤功能"></a>使用viewset本身的过滤功能</h2><pre><code>注意：
+    如果去掉这一段代码会报错
+    queryset = Goods.objects.all().order_by()
+
+class GoodsListViewSet(mixins.ListModelMixin,viewsets.GenericViewSet):
+    &apos;&apos;&apos;
+    商品列表页
+    &apos;&apos;&apos;
+    queryset = Goods.objects.all().order_by()
+    serializer_class = GoodsSerializer
+    pagination_class = LargeResultsSetPagination
+
+    def get_queryset(self):
+        return Goods.objects.filter(shop_price__gt=100)
+
+对传递的参数进行过滤
+
+class GoodsListViewSet(mixins.ListModelMixin,viewsets.GenericViewSet):
+&apos;&apos;&apos;
+商品列表页
+&apos;&apos;&apos;
+queryset = Goods.objects.all().order_by()
+serializer_class = GoodsSerializer
+pagination_class = LargeResultsSetPagination
+
+def get_queryset(self):
+    query_set = Goods.objects.all()
+    price_min = self.request.query_params.get(&apos;price_min&apos;,0)
+    if price_min:
+        query_set = Goods.objects.filter(shop_price__gt=int(price_min))
+    return query_set</code></pre><h2 id="03：43参数过多时的过滤"><a href="#03：43参数过多时的过滤" class="headerlink" title="03：43参数过多时的过滤"></a>03：43参数过多时的过滤</h2><pre><code>https://www.django-rest-framework.org/api-guide/filtering/</code></pre><h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><pre><code>https://www.django-rest-framework.org/api-guide/filtering/#djangofilterbackend
+pip install django-filter</code></pre><p>代码<br>    注意：<br>    要写这个：<br>    queryset = Goods.objects.all().order_by()</p>
+<pre><code>view中
+
+from django_filters.rest_framework import DjangoFilterBackend
+
+class GoodsListViewSet(mixins.ListModelMixin,viewsets.GenericViewSet):
+&apos;&apos;&apos;
+商品列表页
+&apos;&apos;&apos;
+queryset = Goods.objects.all().order_by()
+serializer_class = GoodsSerializer
+pagination_class = LargeResultsSetPagination
+filter_backends = (DjangoFilterBackend,)
+filter_fields = (&apos;name&apos;,&apos;shop_price&apos;)
+
+settings
+INSTALLED_APPS = [
+&apos;django_filters&apos;</code></pre><p>]</p>
+<h3 id="09-23-模糊搜索，和价格的区间搜索"><a href="#09-23-模糊搜索，和价格的区间搜索" class="headerlink" title="09:23-模糊搜索，和价格的区间搜索"></a>09:23-模糊搜索，和价格的区间搜索</h3><pre><code>django-filter在github的源码地址
+https://github.com/carltongibson/django-filter
+https://django-filter.readthedocs.io/en/master/
+https://django-filter.readthedocs.io/en/master/guide/rest_framework.html#quickstart
+
+
+代码示例
+写filters文件
+
+import django_filters
+from .models import Goods
+
+
+class GoodsFilter(django_filters.rest_framework.FilterSet):
+    min_price = django_filters.NumberFilter(field_name=&quot;shop_price&quot;, lookup_expr=&apos;gte&apos;)
+    max_price = django_filters.NumberFilter(field_name=&quot;shop_price&quot;, lookup_expr=&apos;lte&apos;)
+
+    class Meta:
+        model = Goods
+        fields = [&apos;min_price&apos;, &apos;max_price&apos;]
+
+view中的配置
+
+class GoodsListViewSet(mixins.ListModelMixin,viewsets.GenericViewSet):
+&apos;&apos;&apos;
+商品列表页
+&apos;&apos;&apos;
+queryset = Goods.objects.all().order_by()
+serializer_class = GoodsSerializer
+pagination_class = LargeResultsSetPagination
+filter_backends = (DjangoFilterBackend,)
+filterset_class = GoodsFilter</code></pre><h1 id="11-drf的搜索和排序"><a href="#11-drf的搜索和排序" class="headerlink" title="11 drf的搜索和排序"></a>11 drf的搜索和排序</h1><h3 id="配置like查询"><a href="#配置like查询" class="headerlink" title="配置like查询"></a>配置like查询</h3><pre><code>代码示例
+写filters文件
+
+import django_filters
+from .models import Goods
+
+
+class GoodsFilter(django_filters.rest_framework.FilterSet):
+    min_price = django_filters.NumberFilter(field_name=&quot;shop_price&quot;, lookup_expr=&apos;gte&apos;)
+    max_price = django_filters.NumberFilter(field_name=&quot;shop_price&quot;, lookup_expr=&apos;lte&apos;)
+    name = django_filters.CharFilter(field_name=&quot;name&quot;, lookup_expr=&apos;icontains&apos;)
+    class Meta:
+        model = Goods
+        fields = [&apos;min_price&apos;, &apos;max_price&apos;,&apos;name&apos;]
+
+view中的配置
+
+class GoodsListViewSet(mixins.ListModelMixin,viewsets.GenericViewSet):
+&apos;&apos;&apos;
+商品列表页
+&apos;&apos;&apos;
+queryset = Goods.objects.all().order_by()
+serializer_class = GoodsSerializer
+pagination_class = LargeResultsSetPagination
+filter_backends = (DjangoFilterBackend,)
+filterset_class = GoodsFilter</code></pre><h3 id="04：26搜索"><a href="#04：26搜索" class="headerlink" title="04：26搜索"></a>04：26搜索</h3><pre><code>SearchFilter
+https://www.django-rest-framework.org/api-guide/filtering/#searchfilter
+
+使用
+from rest_framework import filters
+
+class GoodsListViewSet(mixins.ListModelMixin,viewsets.GenericViewSet):
+&apos;&apos;&apos;
+商品列表页
+&apos;&apos;&apos;
+queryset = Goods.objects.all().order_by()
+serializer_class = GoodsSerializer
+pagination_class = LargeResultsSetPagination
+filter_backends = (DjangoFilterBackend,filters.SearchFilter)     #
+filterset_class = GoodsFilter #使用django的filter价格区间的查询
+search_fields = [&apos;name&apos;, &apos;goods_brief&apos;,&apos;goods_desc&apos;]              #
+
+
+更多搜索的设置
+
+By default, searches will use case-insensitive partial matches. The search parameter may contain multiple search terms, which should be whitespace and/or comma separated. If multiple search terms are used then objects will be returned in the list only if all the provided terms are matched.
+
+The search behavior may be restricted by prepending various characters to the search_fields.
+
+&apos;^&apos; Starts-with search.
+&apos;=&apos; Exact matches.
+&apos;@&apos; Full-text search. (Currently only supported Django&apos;s MySQL backend.)
+&apos;$&apos; Regex search.
+For example:
+
+search_fields = [&apos;=username&apos;, &apos;=email&apos;]</code></pre><h3 id="11-26-排序"><a href="#11-26-排序" class="headerlink" title="11:26 排序"></a>11:26 排序</h3><pre><code>https://www.django-rest-framework.org/api-guide/filtering/#orderingfilter
+
+class GoodsListViewSet(mixins.ListModelMixin,viewsets.GenericViewSet):
+&apos;&apos;&apos;
+商品列表页，分页，搜索，过滤，排序
+&apos;&apos;&apos;
+queryset = Goods.objects.all().order_by()
+serializer_class = GoodsSerializer
+pagination_class = LargeResultsSetPagination
+filter_backends = (DjangoFilterBackend,filters.SearchFilter,filters.OrderingFilter)
+filterset_class = GoodsFilter #使用django的filter价格区间的查询
+search_fields = [&apos;name&apos;, &apos;goods_brief&apos;,&apos;goods_desc&apos;]
+ordering_fields = [&apos;sold_num&apos;, &apos;add_time&apos;]</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/20/lasted-muxue-04/" rel="next" title="'lasted-muxue-04'">
+                <i class="fa fa-chevron-left"></i> 'lasted-muxue-04'
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/23/lasted-muxue-06/" rel="prev" title="'lasted-muxue-06'">
+                'lasted-muxue-06' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">林冲</p>
+              <p class="site-description motion-element" itemprop="description">找到你了</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#01-django的view实现商品列表"><span class="nav-number">1.</span> <span class="nav-text">01-django的view实现商品列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#02-django的serializers"><span class="nav-number">2.</span> <span class="nav-text">02-django的serializers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用serializers"><span class="nav-number">2.1.</span> <span class="nav-text">使用serializers</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#03-django的restframework商品类列表页数据的返回"><span class="nav-number">3.</span> <span class="nav-text">03-django的restframework商品类列表页数据的返回</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装drf的依赖"><span class="nav-number">3.1.</span> <span class="nav-text">安装drf的依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成drf文档的依赖"><span class="nav-number">3.2.</span> <span class="nav-text">生成drf文档的依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用drf"><span class="nav-number">3.3.</span> <span class="nav-text">使用drf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在url中配置用户认证"><span class="nav-number">3.4.</span> <span class="nav-text">在url中配置用户认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报错"><span class="nav-number">3.5.</span> <span class="nav-text">报错</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#04初步使用django的rest-framework"><span class="nav-number">4.</span> <span class="nav-text">04初步使用django的rest_framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写serializers文件"><span class="nav-number">4.0.1.</span> <span class="nav-text">写serializers文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在view中使用"><span class="nav-number">4.0.2.</span> <span class="nav-text">在view中使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用rest-framework的好处"><span class="nav-number">4.0.3.</span> <span class="nav-text">使用rest_framework的好处</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#05-modelserializer实现商品列表数据的返回"><span class="nav-number">5.</span> <span class="nav-text">05-modelserializer实现商品列表数据的返回</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#login报错修改"><span class="nav-number">5.1.</span> <span class="nav-text">login报错修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用serializers-ModelSerializer示例"><span class="nav-number">5.2.</span> <span class="nav-text">使用serializers.ModelSerializer示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化显示外键示例"><span class="nav-number">5.3.</span> <span class="nav-text">序列化显示外键示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#06-generics实现列表页和分页功能"><span class="nav-number">6.</span> <span class="nav-text">06-generics实现列表页和分页功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#generics-ListAPIView返回列表页数据"><span class="nav-number">6.1.</span> <span class="nav-text">generics.ListAPIView返回列表页数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分页的配置"><span class="nav-number">6.2.</span> <span class="nav-text">分页的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分页报错提示："><span class="nav-number">6.2.1.</span> <span class="nav-text">分页报错提示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分页的两种实现方式"><span class="nav-number">6.2.2.</span> <span class="nav-text">分页的两种实现方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#07-viewset和router完成商品列表页"><span class="nav-number">7.</span> <span class="nav-text">07-viewset和router完成商品列表页</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用viewset实现商品列表页数据展示"><span class="nav-number">7.1.</span> <span class="nav-text">使用viewset实现商品列表页数据展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用router完成url的配置"><span class="nav-number">7.2.</span> <span class="nav-text">使用router完成url的配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#08-drf的Apiview、GenericView、Viewset和router的原理分析"><span class="nav-number">8.</span> <span class="nav-text">08-drf的Apiview、GenericView、Viewset和router的原理分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#09-drf的request和response"><span class="nav-number">9.</span> <span class="nav-text">09-drf的request和response</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-drf的过滤"><span class="nav-number">10.</span> <span class="nav-text">10-drf的过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用viewset本身的过滤功能"><span class="nav-number">10.1.</span> <span class="nav-text">使用viewset本身的过滤功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03：43参数过多时的过滤"><span class="nav-number">10.2.</span> <span class="nav-text">03：43参数过多时的过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用"><span class="nav-number">10.2.1.</span> <span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#09-23-模糊搜索，和价格的区间搜索"><span class="nav-number">10.2.2.</span> <span class="nav-text">09:23-模糊搜索，和价格的区间搜索</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-drf的搜索和排序"><span class="nav-number">11.</span> <span class="nav-text">11 drf的搜索和排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置like查询"><span class="nav-number">11.0.1.</span> <span class="nav-text">配置like查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04：26搜索"><span class="nav-number">11.0.2.</span> <span class="nav-text">04：26搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-26-排序"><span class="nav-number">11.0.3.</span> <span class="nav-text">11:26 排序</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林冲</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">访客数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">总访问量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="where do we go">
 <meta property="og:description" content="day65-02-组件，静态文件相关1：include的使用 {% include &apos;xxx.html&apos; %}2：static_url在setting中static_url指的是静态文件的路径在前端页面的使用 {% load static %}  {% static &apos;&apos; %}3：get_static_prefix只会获得在settings里设置的静态文件的路径在前端的使用 {% get_stat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-31T13:33:10.680Z">
+<meta property="og:updated_time" content="2019-09-05T03:51:48.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lasted day65">
 <meta name="twitter:description" content="day65-02-组件，静态文件相关1：include的使用 {% include &apos;xxx.html&apos; %}2：static_url在setting中static_url指的是静态文件的路径在前端页面的使用 {% load static %}  {% static &apos;&apos; %}3：get_static_prefix只会获得在settings里设置的静态文件的路径在前端的使用 {% get_stat">
@@ -316,7 +316,10 @@ def join_str(*args,**kwargs)
     return &apos;_&apos;.join(args)</code></pre><p>在前端的使用</p>
 <pre><code>{% load xxx %}
 {% join_str 'i' 'like' 'kitty' %}</code></pre><h2 id="inclusion-tag-多用于返回html代码段-鸡肋"><a href="#inclusion-tag-多用于返回html代码段-鸡肋" class="headerlink" title="inclusion_tag-多用于返回html代码段-鸡肋"></a>inclusion_tag-多用于返回html代码段-鸡肋</h2><p>地址：<br><a href="https://www.cnblogs.com/maple-shaw/articles/9333821.html" target="_blank" rel="noopener">https://www.cnblogs.com/maple-shaw/articles/9333821.html</a></p>
-<h1 id="day65-05-视图FBV-amp-CBV"><a href="#day65-05-视图FBV-amp-CBV" class="headerlink" title="day65-05-视图FBV&amp;CBV"></a>day65-05-视图FBV&amp;CBV</h1><h1 id="day65-06-视图CBV源码流程"><a href="#day65-06-视图CBV源码流程" class="headerlink" title="day65-06-视图CBV源码流程"></a>day65-06-视图CBV源码流程</h1><h1 id="day65-07-视图之使用装饰器的方法"><a href="#day65-07-视图之使用装饰器的方法" class="headerlink" title="day65-07-视图之使用装饰器的方法"></a>day65-07-视图之使用装饰器的方法</h1>
+<h1 id="day65-05-视图FBV-amp-CBV"><a href="#day65-05-视图FBV-amp-CBV" class="headerlink" title="day65-05-视图FBV&amp;CBV"></a>day65-05-视图FBV&amp;CBV</h1><h1 id="day65-06-视图CBV源码流程"><a href="#day65-06-视图CBV源码流程" class="headerlink" title="day65-06-视图CBV源码流程"></a>day65-06-视图CBV源码流程</h1><h1 id="day65-07-视图之使用装饰器的方法"><a href="#day65-07-视图之使用装饰器的方法" class="headerlink" title="day65-07-视图之使用装饰器的方法"></a>day65-07-视图之使用装饰器的方法</h1><h2 id="在CBV使用装饰器"><a href="#在CBV使用装饰器" class="headerlink" title="在CBV使用装饰器"></a>在CBV使用装饰器</h2><p>12:20<br>from django.utils.decorator import method_decorator<br>在方法中使用<br>@method_decorator(time)</p>
+<h2 id="在上一节的内容中，反射内容的讲解"><a href="#在上一节的内容中，反射内容的讲解" class="headerlink" title="在上一节的内容中，反射内容的讲解"></a>在上一节的内容中，反射内容的讲解</h2><p>dispatch()方法的使用</p>
+<h1 id="day65-08-request对象和response对象"><a href="#day65-08-request对象和response对象" class="headerlink" title="day65-08-request对象和response对象"></a>day65-08-request对象和response对象</h1><p><a href="https://www.cnblogs.com/maple-shaw/articles/9285269.html" target="_blank" rel="noopener">https://www.cnblogs.com/maple-shaw/articles/9285269.html</a></p>
+<h2 id><a href="#" class="headerlink" title></a></h2>
       
     </div>
     
@@ -429,7 +432,7 @@ def join_str(*args,**kwargs)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -475,7 +478,7 @@ def join_str(*args,**kwargs)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-02-组件，静态文件相关"><span class="nav-number">1.</span> <span class="nav-text">day65-02-组件，静态文件相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-03-组件，静态文件总结"><span class="nav-number">2.</span> <span class="nav-text">day65-03-组件，静态文件总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-04-模板语法simple-tag和inclusion-tag"><span class="nav-number">3.</span> <span class="nav-text">day65-04-模板语法simple_tag和inclusion_tag</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-tag-鸡肋"><span class="nav-number">3.1.</span> <span class="nav-text">simple_tag-鸡肋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inclusion-tag-多用于返回html代码段-鸡肋"><span class="nav-number">3.2.</span> <span class="nav-text">inclusion_tag-多用于返回html代码段-鸡肋</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-05-视图FBV-amp-CBV"><span class="nav-number">4.</span> <span class="nav-text">day65-05-视图FBV&amp;CBV</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-06-视图CBV源码流程"><span class="nav-number">5.</span> <span class="nav-text">day65-06-视图CBV源码流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-07-视图之使用装饰器的方法"><span class="nav-number">6.</span> <span class="nav-text">day65-07-视图之使用装饰器的方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-02-组件，静态文件相关"><span class="nav-number">1.</span> <span class="nav-text">day65-02-组件，静态文件相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-03-组件，静态文件总结"><span class="nav-number">2.</span> <span class="nav-text">day65-03-组件，静态文件总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-04-模板语法simple-tag和inclusion-tag"><span class="nav-number">3.</span> <span class="nav-text">day65-04-模板语法simple_tag和inclusion_tag</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-tag-鸡肋"><span class="nav-number">3.1.</span> <span class="nav-text">simple_tag-鸡肋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inclusion-tag-多用于返回html代码段-鸡肋"><span class="nav-number">3.2.</span> <span class="nav-text">inclusion_tag-多用于返回html代码段-鸡肋</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-05-视图FBV-amp-CBV"><span class="nav-number">4.</span> <span class="nav-text">day65-05-视图FBV&amp;CBV</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-06-视图CBV源码流程"><span class="nav-number">5.</span> <span class="nav-text">day65-06-视图CBV源码流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-07-视图之使用装饰器的方法"><span class="nav-number">6.</span> <span class="nav-text">day65-07-视图之使用装饰器的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在CBV使用装饰器"><span class="nav-number">6.1.</span> <span class="nav-text">在CBV使用装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在上一节的内容中，反射内容的讲解"><span class="nav-number">6.2.</span> <span class="nav-text">在上一节的内容中，反射内容的讲解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#day65-08-request对象和response对象"><span class="nav-number">7.</span> <span class="nav-text">day65-08-request对象和response对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">7.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
             
 
           </div>
